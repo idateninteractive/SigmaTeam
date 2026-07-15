@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        body { 
-            margin: 0; 
-            font-family: Arial, sans-serif; 
-            color: #c6d4df;
-            background-image: linear-gradient(rgba(27, 40, 56, 0.85), rgba(27, 40, 56, 0.85)), 
-                              url('https://www.wallpaperalchemy.com/storage/wallpapers/329/battlefield-6-engineer-4k-gaming-wallpaper.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
+        body { margin: 0; font-family: Arial, sans-serif; color: #c6d4df; background-image: linear-gradient(rgba(27, 40, 56, 0.85), rgba(27, 40, 56, 0.85)), url('https://www.wallpaperalchemy.com/storage/wallpapers/329/battlefield-6-engineer-4k-gaming-wallpaper.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; }
         .header_wrapper { background-color: #171a21; padding: 15px 0; border-bottom: 2px solid #66c0f4; }
         .content { max-width: 940px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         .logo { font-size: 28px; font-weight: bold; color: #ffffff; }
-        
         .search_bar { width: 300px; padding: 8px; background: #101822; border: 1px solid #334455; color: #fff; }
-        .discord_link { color: #7289da; text-decoration: none; font-weight: bold; font-size: 16px; }
+        .discord_link { color: #7289da; text-decoration: none; font-weight: bold; }
 
         .game_container { max-width: 940px; margin: 30px auto; }
         .game_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -31,10 +20,21 @@
         .profile_layout { display: flex; gap: 30px; margin-bottom: 30px; }
         .profile_img { width: 320px; min-height: 400px; background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #66c0f4; background-color: #000; flex-shrink: 0; }
         .profile_info { flex: 1; display: flex; flex-direction: column; }
-        
         .video_container { width: 100%; height: 350px; background: #000; margin-bottom: 20px; }
-        .btn_container { display: flex; justify-content: center; padding-top: 10px; }
-        .download_img_btn { cursor: pointer; transition: 0.2s; max-width: 280px; }
+        
+        .btn_container { display: flex; justify-content: center; align-items: center; gap: 20px; padding-top: 10px; min-height: 80px; }
+        
+        /* Buy aur Download buttons ka size barabar */
+        .buy_btn_img, .download_img_btn { 
+            cursor: pointer; 
+            width: 280px; 
+            height: 70px; 
+            object-fit: contain; 
+        }
+        .download_img_btn { display: none; }
+        
+        .code_input_area { display: flex; gap: 5px; align-items: center; }
+        #code_input { padding: 8px; background: #1b2838; border: 1px solid #66c0f4; color: white; height: 30px; width: 150px; }
     </style>
 </head>
 <body>
@@ -65,9 +65,19 @@
                 <div class="video_container">
                     <iframe id="p_video" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
+                
                 <div class="btn_container">
                     <a id="p_link" href="https://rzp.io/rzp/uaS0IxsM" target="_blank">
-                        <img src="https://archive.org/download/new-project-1_202607/New%20Project%281%29.png" class="download_img_btn">
+                        <img src="https://archive.org/download/new-project-1_202607/New%20Project%281%29.png" class="buy_btn_img">
+                    </a>
+
+                    <div id="code_area" class="code_input_area">
+                        <input type="text" id="code_input" placeholder="Enter Code">
+                        <button onclick="checkCode()">Check</button>
+                    </div>
+
+                    <a id="dl_link" href="#" target="_blank">
+                        <img src="https://archive.org/download/new-project-2_20260715/New%20Project%282%29.png" class="download_img_btn" id="dl_btn">
                     </a>
                 </div>
             </div>
@@ -92,8 +102,23 @@
             document.getElementById('p_img').style.backgroundImage = 'url("' + g.img + '")';
             document.getElementById('p_video').src = g.video;
             
+            // UI Reset
+            document.getElementById('dl_btn').style.display = 'none';
+            document.getElementById('code_area').style.display = 'flex';
+            document.getElementById('code_input').value = '';
+
             profile.style.display = 'block';
             profile.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkCode() {
+            const code = document.getElementById('code_input').value;
+            if (code === 'AS2THE' || code === 'AS2RGG') {
+                document.getElementById('dl_btn').style.display = 'block';
+                document.getElementById('code_area').style.display = 'none';
+            } else {
+                alert('Invalid Code!');
+            }
         }
     </script>
 </body>
