@@ -32,8 +32,8 @@
 
     <div class="header_wrapper">
         <div class="content">
-            <div class="logo">Sigma Team</div>
-            <!-- Added id="search_input" to target it easily -->
+            <!-- Badla hua naam yahan hai -->
+            <div class="logo">PC GAME OF CHILDHOOD</div>
             <input type="text" id="search_input" class="search_bar" placeholder="Search games...">
             <a href="#" class="discord_link">DISCORD</a>
         </div>
@@ -148,13 +148,12 @@
             const gameCards = document.querySelectorAll('.game_card');
 
             gameCards.forEach(card => {
-                // Card ke andar ka text content check karega
                 const gameTitle = card.textContent.toLowerCase();
                 
                 if (gameTitle.includes(searchQuery)) {
-                    card.style.display = ''; // Visible rakhega (Grid layout maintain karega)
+                    card.style.display = ''; 
                 } else {
-                    card.style.display = 'none'; // Hide kar dega
+                    card.style.display = 'none'; 
                 }
             });
         });
