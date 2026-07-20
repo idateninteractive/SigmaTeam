@@ -43,7 +43,7 @@
         .profile_info { width: 100%; display: flex; flex-direction: column; }
         .video_container { width: 100%; height: 450px; background: #000; margin-bottom: 20px; }
         
-        .btn_container { display: flex; justify-content: center; align-items: center; padding-top: 10px; min-height: 80px; }
+        .btn_container { display: flex; justify-content: center; align-items: center; padding-top: 10px; min-height: 80px; gap: 15px; flex-wrap: wrap; }
         .download_img_btn { cursor: pointer; width: 280px; height: 70px; object-fit: contain; }
     </style>
 </head>
@@ -112,6 +112,9 @@
             <div class="game_card" onclick="showProfile('prodeus')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWQ32O1tttI6nASnowxJINTWhY-qfbC3YVlrnaXnf5BJaQioVLUQsqDOlt&s=10');"></div>Prodeus</div>
             <div class="game_card" onclick="showProfile('opflash')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrrgoJlxAHgHfn49hAn-Su-zqjcg9u1wtMvfaA92p73A&s=10');"></div>Operation Flashpoint GOTY</div>
             <div class="game_card" onclick="showProfile('metro_redux')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxLyaBb5fbfTQ3-mJl1U8UtbVsgh-g8t---UmGpoFukA&s=10');"></div>Metro Redux Bundle</div>
+            
+            <!-- Transformers: Revenge of the Fallen -->
+            <div class="game_card" onclick="showProfile('trotf')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO8sqewKm1qMJ2g9kdaWD2vbd1voYhmfsoFEoBKcuf7A&s=10');"></div>Transformers: Revenge of the Fallen</div>
         </div>
     </div>
 
@@ -123,8 +126,13 @@
                     <iframe id="p_video" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="btn_container">
+                    <!-- Download Button 1 -->
                     <a id="dl_link" href="#" target="_blank">
                         <img src="https://archive.org/download/new-project-2_20260715/New%20Project%282%29.png" class="download_img_btn" id="dl_btn">
+                    </a>
+                    <!-- Download Button 2 (Phototourl Image) -->
+                    <a id="dl_link2" href="#" target="_blank" style="display: none;">
+                        <img src="https://cdn.phototourl.com/free/2026-07-20-61dce233-5a92-4b9a-8d44-3f79028f57ce.png" class="download_img_btn" id="dl_btn2">
                     </a>
                 </div>
             </div>
@@ -169,10 +177,12 @@
             'blacklight': { title: 'Blacklight Retribution', video: 'https://www.youtube.com/embed/vXVbKds7dSQ', dl: 'https://pixeldrain.com/u/xg3fXRwG' },
             'prodeus': { title: 'Prodeus', video: 'https://www.youtube.com/embed/AUN7t2RyMSs', dl: 'https://uptobox.com/jhvgpet8gis5' },
             'opflash': { title: 'Operation Flashpoint GOTY', video: 'https://www.youtube.com/embed/LE0lIpifstA', dl: 'https://pixeldrain.com/u/v3Te5p81' },
-            'metro_redux': { 
-                title: 'Metro Redux Bundle', 
-                video: 'https://www.youtube.com/embed/kPEh8XlSQuI', 
-                dl: 'https://pixeldrain.com/u/iJ1JyPxi' 
+            'metro_redux': { title: 'Metro Redux Bundle', video: 'https://www.youtube.com/embed/kPEh8XlSQuI', dl: 'https://pixeldrain.com/u/iJ1JyPxi' },
+            'trotf': { 
+                title: 'Transformers: Revenge of the Fallen', 
+                video: 'https://www.youtube.com/embed/3Y3A-a3uM1o', 
+                dl: 'https://megaup.net/0969489306325334816a7ed03070215f/Transformers.2.Revenge.of.the.Fallen.The.Game.rar',
+                dl2: 'https://akirabox.to/dZxG5q9QKGVj/file'
             }
         };
 
@@ -187,15 +197,25 @@
             document.getElementById('p_title').innerText = g.title;
             document.getElementById('p_video').src = g.video;
             
+            // First Download Button
             const dlBtn = document.getElementById('dl_btn');
             document.getElementById('dl_link').href = g.dl;
-            dlBtn.style.display = 'block';
+            dlBtn.style.display = 'inline-block';
+
+            // Second Download Button (Shows automatically whenever dl2 exists)
+            const dlLink2 = document.getElementById('dl_link2');
+            if (g.dl2) {
+                dlLink2.href = g.dl2;
+                dlLink2.style.display = 'inline-block';
+            } else {
+                dlLink2.style.display = 'none';
+            }
 
             profile.style.display = 'block';
             profile.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Live Search Bar Logic
+        // Search Bar Functionality
         document.getElementById('search_input').addEventListener('input', function(e) {
             const searchQuery = e.target.value.toLowerCase();
             const gameCards = document.querySelectorAll('.game_card');
