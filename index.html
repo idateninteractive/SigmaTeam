@@ -5,7 +5,16 @@
     <meta name="google-site-verification" content="B2xRy7vwpQA0ahzbNS29keCqi16WUXf2YrJUC03Q69U" />
     <title>Sigma Team Games</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; color: #c6d4df; background-image: linear-gradient(rgba(27, 40, 56, 0.85), rgba(27, 40, 56, 0.85)), url('https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/assassins-creed-rogue-chromebook-wallpaper.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; }
+        body { 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            color: #c6d4df; 
+            background-image: linear-gradient(rgba(27, 40, 56, 0.85), rgba(27, 40, 56, 0.85)), url('https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/assassins-creed-rogue-chromebook-wallpaper.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat; 
+        }
         .header_wrapper { background-color: #171a21; padding: 15px 0; border-bottom: 2px solid #66c0f4; }
         .content { max-width: 940px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         .logo { font-size: 28px; font-weight: bold; color: #ffffff; }
@@ -17,13 +26,22 @@
         .game_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .game_card { background: #16202d; padding: 10px; border: 1px solid #000; cursor: pointer; transition: 0.2s; text-align: center; }
         .game_card:hover { transform: scale(1.03); background: #1a293a; }
-        .game_img { width: 100%; height: 100px; background-size: cover; background-position: center; margin-bottom: 10px; pointer-events: none; }
+        
+        /* Store Grid Image - Aspect Ratio 353/557 */
+        .game_img { 
+            width: 100%; 
+            aspect-ratio: 353 / 557; 
+            background-size: cover; 
+            background-position: center; 
+            margin-bottom: 10px; 
+            pointer-events: none; 
+        }
 
         #profile_section { max-width: 940px; margin: 30px auto; background: #101822; padding: 25px; display: none; border: 1px solid #334455; }
-        .profile_layout { display: flex; gap: 30px; margin-bottom: 30px; }
-        .profile_img { width: 320px; min-height: 400px; background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #66c0f4; background-color: #000; flex-shrink: 0; }
-        .profile_info { flex: 1; display: flex; flex-direction: column; }
-        .video_container { width: 100%; height: 350px; background: #000; margin-bottom: 20px; }
+        .profile_layout { display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
+
+        .profile_info { width: 100%; display: flex; flex-direction: column; }
+        .video_container { width: 100%; height: 450px; background: #000; margin-bottom: 20px; }
         
         .btn_container { display: flex; justify-content: center; align-items: center; padding-top: 10px; min-height: 80px; }
         .download_img_btn { cursor: pointer; width: 280px; height: 70px; object-fit: contain; }
@@ -100,7 +118,6 @@
     <div id="profile_section">
         <h1 id="p_title" style="color: #ffffff; margin-top: 0;"></h1>
         <div class="profile_layout">
-            <div id="p_img" class="profile_img"></div>
             <div class="profile_info">
                 <div class="video_container">
                     <iframe id="p_video" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
@@ -116,45 +133,44 @@
 
     <script>
         const games = {
-            'oni': { title: 'Oni', img: 'https://upload.wikimedia.org/wikipedia/en/2/2e/Oni_Coverart.jpg', video: 'https://www.youtube.com/embed/3uKOMtJZBtU', dl: 'https://megaup.net/36dc3e93b98949bf1b392ad91f502f2f/Oni.PC.rar' },
-            'ac4bf': { title: 'Assassin’s Creed IV Black Flag', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fGDcSPKvjym-L_AgiXzdSFX1-PQzwYQp3kr_yAR1tw&s=10', video: 'https://www.youtube.com/embed/b797EfJ4NOg', dl: 'https://megaup.net/ba45a6ef7b3c0211f9f2a5b133c7f3ff/Assassinss.Creed.4.Black.Flag.v1.07.Inclu.ALL.DLC.rar' },
-            'thrc': { title: 'Top Hunter Roddy & Cathy', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgA8mkSb2J73Wfbray0H9YY9zvlvHBPoJ9Zciuq7y8rQ&s=10', video: 'https://www.youtube.com/embed/Cw0tYOvQvko', dl: 'https://megaup.net/66132a1afd59dcfc9355697622ad6ed3/TOP.HUNTER.RODDY.and.CATHY-GOG.rar' },
-            'yso': { title: 'Ys Origin', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky1F3llZEtn6wXMGSwx7XY8h9_iX95MOv3ETzaLN0Yg&s=10', video: 'https://www.youtube.com/embed/GBtnT41f_Gw', dl: 'https://megaup.net/42572fe668a9d489c6ad0776cfdef88a/ysorigin.zip' },
-            'omd': { title: 'One More Dungeon', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAEOhW9pBPIgR7Dg5Hjcdk_MWMVQZ7tbO5cYcuF6Fu1XcphXKhVniLrgxB&s=10', video: 'https://www.youtube.com/embed/kG-jXKSVrUE', dl: 'https://megaup.net/fc2b955fc76e552db86bd88c0a1eaeff/One.More.Dungeon.v1.2.1.rar' },
-            'nh': { title: 'Neuro Hunter', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_HgcMu_Yc97Z7nTeAlZtKSU4WdFTjWsxhYswd1k98LA&s', video: 'https://www.youtube.com/embed/tQjcas8yRSk', dl: 'https://pixeldrain.com/u/do5e8Jo5' },
-            'kof13': { title: 'The King of Fighters XIII Steam Edition', img: 'https://upload.wikimedia.org/wikipedia/en/1/13/Kofxiiips3.png', video: 'https://www.youtube.com/embed/FHo-rwNVbBk', dl: 'https://pixeldrain.com/u/q1GGCVs6' },
-            'mkk': { title: 'Mortal Kombat Komplete', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDDkGbNBTJlyT1LKLlGoIR1lKfZSiokiQHR0gXEEPCTQ&s=10', video: 'https://www.youtube.com/embed/PloamVW-eX0', dl: 'https://megaup.net/03494621d88dba8d609b413dde7f4a59/Mortal.Kombat.Komplete.Edition-incl..Update.2.rar' },
-            'dj': { title: 'Diver Jimmy', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ08LifM4ABZOXXRrVe12tcQrvCqcjmh9FgreQ-CTVkZm2u65OAB3U3FUHH&s=10', video: 'https://www.youtube.com/embed/iuUq113tltY', dl: 'https://www.myrealgames.com/files/diver-jimmy.exe' },
-            'cec2d': { title: 'Car Eats Car 2 Deluxe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5eGK7kVoePYhJ4RUSVyZ5puveDFRgcK1HWDxu1ie2qA&s=10', video: 'https://www.youtube.com/embed/_TG-aL9MrPA', dl: 'https://www.myrealgames.com/files/car-eats-car-2-deluxe.exe' },
-            'ah': { title: 'Alien Hallway', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUpcBgpWPNgm7ZTBIpdBmww19qNslBnWroIzCUJG3y_A&s=10', video: 'https://www.youtube.com/embed/ukL6xgCOyV4', dl: 'https://www.myrealgames.com/files/alien-hallway.exe' },
-            'asv': { title: 'Alien Shooter: Vengeance', img: 'https://cdn.mobygames.com/covers/4787964-alien-shooter-vengeance-windows-front-cover.jpg', video: 'https://www.youtube.com/embed/ACVLiM7OmaI', dl: 'https://pixeldrain.com/u/tKndRgP9' },
-            'zs2': { title: 'Zombie Shooter 2', img: 'https://cdn2.steamgriddb.com/grid/8b335fa0f1f44814d43a9f6560794acd.png', video: 'https://www.youtube.com/embed/YhMCWhnABN8', dl: 'https://pixeldrain.com/u/jAjo27A3' },
-            'as2l': { title: 'Alien Shooter 2: The Legend', img: 'https://cdn2.steamgriddb.com/grid/8aafbec485367229542990511bafc0b5.png', video: 'https://www.youtube.com/embed/iiiLRqRVgbA', dl: 'https://megaup.net/d1a512ef48369657acaea7ab17b981bd/AlienShoot2ReloadedGOG.rar' },
-            'as2r': { title: 'Alien Shooter 2: Reloaded', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxaxvDT3IN0n1Wi0s0fgnr1MDpsqdHQ2v6KezP8h9eC4sa_mb2OGu1-6R&s=10', video: 'https://www.youtube.com/embed/x9o284YDetQ', dl: 'https://megaup.net/d1a512ef48369657acaea7ab17b981bd/AlienShoot2ReloadedGOG.rar' },
-            'aslh': { title: 'Alien Shooter – Last Hope', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCZZnY9mjgser5R6WcFyBve0i7_JeRqFMIBvS1DotZtk7NrS3bTtUhEz4&s=10', video: 'https://www.youtube.com/embed/rbexTPNjWlY', dl: 'https://pixeldrain.com/u/di996nxv' },
-            'igi': { title: 'Project IGI: Neonix Remastered', img: 'https://cdn.phototourl.com/free/2026-07-16-91347105-2bb4-4628-a285-ab75cb20e9fc.png', video: 'https://www.youtube.com/embed/tq5N5CmAY0w', dl: 'https://files.nexus-cdn.com/5349/5/IGI%201%20Neonix%20Remastered%201.4-5-1-4-1757006135.zip?md5=2PlnvN9RAf0lIt6nUG66lA&expires=1784202951&user_id=257889931' },
-            'igi2': { title: 'I.G.I 2 Neonix Patch', img: 'https://staticdelivery.nexusmods.com/mods/5664/images/8/8-1726626244-2078707165.png', video: 'https://www.youtube.com/embed/hUqyL1vWMuY', dl: 'https://files.nexus-cdn.com/5664/8/IGI2NeonixPatch%201.3-8-1-3-1738873666.zip?md5=O6rs0IfUuqhUihE_hKd6qg&expires=1784203382&user_id=257889931' },
-            'codwaw': { title: 'Call of Duty: World At War', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5xv_1WGz3PbaLKb5s7HcdNSZOKebc8wodaUMR259yoA&s=10', video: 'https://www.youtube.com/embed/AbBoxahWa6g', dl: 'https://pixeldrain.com/u/W1FSW38W' },
-            'specnaz': { title: 'SPECNAZ Project Wolf', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWubElW5aTiTcYOeBOB7CLNJUtgdKhRkCq6cdtBanjyQ&s=10', video: 'https://www.youtube.com/embed/W7uS_0WRPeQ', dl: 'https://pixeldrain.com/u/7tHMytvk' },
-            'ewv': { title: 'Elite Warriors Vietnam', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwl2Ury485T2c-6erBpCXoARHzuy_bjh9MFDmyNmSALw&s=10', video: 'https://www.youtube.com/embed/YVPCzs3ntBg', dl: 'https://pixeldrain.com/u/kjAAPmVx' },
-            'dfx': { title: 'Delta Force Xtreme', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_O67XuiTpdrz3UJI7RmdvIntaOS65c-0OgXrqnWA_jxyeOxfQtJORpOo&s=10', video: 'https://www.youtube.com/embed/WhLH77RrCYc', dl: 'https://pixeldrain.com/u/ciz3xqvp' },
-            'ccftf': { title: 'Close Combat First To Fight', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6OQ0OualLbpknrDnvNxNTDAwXJP46V7YWmWpi9jt1dGaiPeJJBnxIGCI&s=10', video: 'https://www.youtube.com/embed/-pFWZWLEej4', dl: 'https://pixeldrain.com/u/Yqd92dzx' },
-            'insurgency': { title: 'Insurgency Sandstorm', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQx42hAW1xOm3J364nH7vldr08VndBbP9pVdGpr1z9Mw&s=10', video: 'https://www.youtube.com/embed/J5KDp5h72Wo', dl: 'https://1fichier.com/?z2tj2g3saojvvm9erdxd' },
-            'losv': { title: 'Line of Sight Vietnam', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9R6pf6z1HWEFlHS-4sXSX9ox4NRDblchJSH4Jx3WvOWiA&s', video: 'https://www.youtube.com/embed/4Rfmyc4JEJw', dl: 'https://www.mediafire.com/file/801o3kyrgu4ko2k/lineofsightvietnam.zip/file' },
-            'dw8xl': { title: 'Dynasty Warriors 8: Xtreme Legends', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuk4odKEu8g0EwOLyh7aAmZf9GKLpGLEHphtptTgFb4QhmSXZZYYeJnxG9&s=10', video: 'https://www.youtube.com/embed/59WUommXTus', dl: 'https://megaup.net/folder/4563fcb76b0c63a015df91b8e8594524/Dynasty_Warriors_8' },
-            'gow1': { title: 'GOD OF WAR 1', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBxQRYfj0agm_k6jl8EPs9TGoZynaafNZuzvmCGr2yrQ&s=10', video: 'https://www.youtube.com/embed/Lbj5C-Sw2_A', dl: 'https://pixeldrain.com/u/B8iAv4aq' },
-            'asrev': { title: 'Alien Shooter: Revisited', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREkKvXZiA_d0IwrzH7-m55bbSHrqcZ7GXQYSigOpNPpQ&s=10', video: 'https://www.youtube.com/embed/IMZE9O9b_2c', dl: 'https://download.informer.com/win-1191510807-6a5652f8-654d816e-2e2c9f2e59fe7de817-a8ce1dc7a8b1fabeb-5012947902-1124846395/asrevdemo.exe' },
-            'as2ne': { title: 'Alien Shooter 2 - New Era', img: 'https://images.gog.com/4ee50c12b9aabba54c56a71679974f52162f557e2d0fab1c881e00d34dbd8422_glx_vertical_cover.webp?namespace=gamesdb', video: 'https://www.youtube.com/embed/bo1z1ZDxNNA', dl: 'https://download192.uploadhaven.com/1/application/zip/FaHTaGM3xzJr0DbaSHCDjwB4jWhZ9vzKUd2ZICeF.zip?key=3dovYZeBGxbTQ02DUkg0IA&expire=1784475328&filename=Alien.Shooter.2.NE.v1.0.1.zip' },
-            'as': { title: 'Alien Shooter', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_DLL8uwcnCJyvkYE4S8IM38hGBBKzRukTurDHomU2wA&s=10', video: 'https://www.youtube.com/embed/hL7Ci3MX82s', dl: 'https://download191.uploadhaven.com/1/application/zip/87wrm7DQFMgT01hvAfsBiq2dTWBg7N9NNPcoHmnL.zip?key=1e9TmopCbBMJfsuwMSHIJg&expire=1784476103&filename=alien.shooter.expansions.zip' },
-            'a_iso': { title: 'Alien Isolation Collection', img: 'https://upload.wikimedia.org/wikipedia/en/6/6e/Alien_Isolation.jpg', video: 'https://www.youtube.com/embed/1pvaw3tqgaw', dl: 'https://pixeldrain.com/u/VQjTpbDh' },
-            'hl2': { title: 'Half-Life 2', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9QrQWTkvhwqtabvBJ-VsyQHOOlGJiHMaNjmhdf0b1fRUhRnWcb5nqADNbpI&s=10', video: 'https://www.youtube.com/embed/laGws1MYMq0', dl: 'https://pixeldrain.com/u/AykDHogE' },
-            'quake_ee': { title: 'Quake Enhanced Edition', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNTiP6IhQXZL2n_CHAqa4LDuEM-CelP0B14ZD7Usm40g&s=10', video: 'https://www.youtube.com/embed/vi-bdUd9J3E', dl: 'https://pixeldrain.com/u/VMdXEXBD' },
-            'blacklight': { title: 'Blacklight Retribution', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQglG59vTFdpjqMn4AHZAfkAP8hRgnVcJkgcrmNaY-aRA&s=10', video: 'https://www.youtube.com/embed/vXVbKds7dSQ', dl: 'https://pixeldrain.com/u/xg3fXRwG' },
-            'prodeus': { title: 'Prodeus', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWQ32O1tttI6nASnowxJINTWhY-qfbC3YVlrnaXnf5BJaQioVLUQsqDOlt&s=10', video: 'https://www.youtube.com/embed/AUN7t2RyMSs', dl: 'https://uptobox.com/jhvgpet8gis5' },
-            'opflash': { title: 'Operation Flashpoint GOTY', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrrgoJlxAHgHfn49hAn-Su-zqjcg9u1wtMvfaA92p73A&s=10', video: 'https://www.youtube.com/embed/LE0lIpifstA', dl: 'https://pixeldrain.com/u/v3Te5p81' },
+            'oni': { title: 'Oni', video: 'https://www.youtube.com/embed/3uKOMtJZBtU', dl: 'https://megaup.net/36dc3e93b98949bf1b392ad91f502f2f/Oni.PC.rar' },
+            'ac4bf': { title: 'Assassin’s Creed IV Black Flag', video: 'https://www.youtube.com/embed/b797EfJ4NOg', dl: 'https://megaup.net/ba45a6ef7b3c0211f9f2a5b133c7f3ff/Assassinss.Creed.4.Black.Flag.v1.07.Inclu.ALL.DLC.rar' },
+            'thrc': { title: 'Top Hunter Roddy & Cathy', video: 'https://www.youtube.com/embed/Cw0tYOvQvko', dl: 'https://megaup.net/66132a1afd59dcfc9355697622ad6ed3/TOP.HUNTER.RODDY.and.CATHY-GOG.rar' },
+            'yso': { title: 'Ys Origin', video: 'https://www.youtube.com/embed/GBtnT41f_Gw', dl: 'https://megaup.net/42572fe668a9d489c6ad0776cfdef88a/ysorigin.zip' },
+            'omd': { title: 'One More Dungeon', video: 'https://www.youtube.com/embed/kG-jXKSVrUE', dl: 'https://megaup.net/fc2b955fc76e552db86bd88c0a1eaeff/One.More.Dungeon.v1.2.1.rar' },
+            'nh': { title: 'Neuro Hunter', video: 'https://www.youtube.com/embed/tQjcas8yRSk', dl: 'https://pixeldrain.com/u/do5e8Jo5' },
+            'kof13': { title: 'The King of Fighters XIII Steam Edition', video: 'https://www.youtube.com/embed/FHo-rwNVbBk', dl: 'https://pixeldrain.com/u/q1GGCVs6' },
+            'mkk': { title: 'Mortal Kombat Komplete', video: 'https://www.youtube.com/embed/PloamVW-eX0', dl: 'https://megaup.net/03494621d88dba8d609b413dde7f4a59/Mortal.Kombat.Komplete.Edition-incl..Update.2.rar' },
+            'dj': { title: 'Diver Jimmy', video: 'https://www.youtube.com/embed/iuUq113tltY', dl: 'https://www.myrealgames.com/files/diver-jimmy.exe' },
+            'cec2d': { title: 'Car Eats Car 2 Deluxe', video: 'https://www.youtube.com/embed/_TG-aL9MrPA', dl: 'https://www.myrealgames.com/files/car-eats-car-2-deluxe.exe' },
+            'ah': { title: 'Alien Hallway', video: 'https://www.youtube.com/embed/ukL6xgCOyV4', dl: 'https://www.myrealgames.com/files/alien-hallway.exe' },
+            'asv': { title: 'Alien Shooter: Vengeance', video: 'https://www.youtube.com/embed/ACVLiM7OmaI', dl: 'https://pixeldrain.com/u/tKndRgP9' },
+            'zs2': { title: 'Zombie Shooter 2', video: 'https://www.youtube.com/embed/YhMCWhnABN8', dl: 'https://pixeldrain.com/u/jAjo27A3' },
+            'as2l': { title: 'Alien Shooter 2: The Legend', video: 'https://www.youtube.com/embed/iiiLRqRVgbA', dl: 'https://megaup.net/d1a512ef48369657acaea7ab17b981bd/AlienShoot2ReloadedGOG.rar' },
+            'as2r': { title: 'Alien Shooter 2: Reloaded', video: 'https://www.youtube.com/embed/x9o284YDetQ', dl: 'https://megaup.net/d1a512ef48369657acaea7ab17b981bd/AlienShoot2ReloadedGOG.rar' },
+            'aslh': { title: 'Alien Shooter – Last Hope', video: 'https://www.youtube.com/embed/rbexTPNjWlY', dl: 'https://pixeldrain.com/u/di996nxv' },
+            'igi': { title: 'Project IGI: Neonix Remastered', video: 'https://www.youtube.com/embed/tq5N5CmAY0w', dl: 'https://files.nexus-cdn.com/5349/5/IGI%201%20Neonix%20Remastered%201.4-5-1-4-1757006135.zip?md5=2PlnvN9RAf0lIt6nUG66lA&expires=1784202951&user_id=257889931' },
+            'igi2': { title: 'I.G.I 2 Neonix Patch', video: 'https://www.youtube.com/embed/hUqyL1vWMuY', dl: 'https://files.nexus-cdn.com/5664/8/IGI2NeonixPatch%201.3-8-1-3-1738873666.zip?md5=O6rs0IfUuqhUihE_hKd6qg&expires=1784203382&user_id=257889931' },
+            'codwaw': { title: 'Call of Duty: World At War', video: 'https://www.youtube.com/embed/AbBoxahWa6g', dl: 'https://pixeldrain.com/u/W1FSW38W' },
+            'specnaz': { title: 'SPECNAZ Project Wolf', video: 'https://www.youtube.com/embed/W7uS_0WRPeQ', dl: 'https://pixeldrain.com/u/7tHMytvk' },
+            'ewv': { title: 'Elite Warriors Vietnam', video: 'https://www.youtube.com/embed/YVPCzs3ntBg', dl: 'https://pixeldrain.com/u/kjAAPmVx' },
+            'dfx': { title: 'Delta Force Xtreme', video: 'https://www.youtube.com/embed/WhLH77RrCYc', dl: 'https://pixeldrain.com/u/ciz3xqvp' },
+            'ccftf': { title: 'Close Combat First To Fight', video: 'https://www.youtube.com/embed/-pFWZWLEej4', dl: 'https://pixeldrain.com/u/Yqd92dzx' },
+            'insurgency': { title: 'Insurgency Sandstorm', video: 'https://www.youtube.com/embed/J5KDp5h72Wo', dl: 'https://1fichier.com/?z2tj2g3saojvvm9erdxd' },
+            'losv': { title: 'Line of Sight Vietnam', video: 'https://www.youtube.com/embed/4Rfmyc4JEJw', dl: 'https://www.mediafire.com/file/801o3kyrgu4ko2k/lineofsightvietnam.zip/file' },
+            'dw8xl': { title: 'Dynasty Warriors 8: Xtreme Legends', video: 'https://www.youtube.com/embed/59WUommXTus', dl: 'https://megaup.net/folder/4563fcb76b0c63a015df91b8e8594524/Dynasty_Warriors_8' },
+            'gow1': { title: 'GOD OF WAR 1', video: 'https://www.youtube.com/embed/Lbj5C-Sw2_A', dl: 'https://pixeldrain.com/u/B8iAv4aq' },
+            'asrev': { title: 'Alien Shooter: Revisited', video: 'https://www.youtube.com/embed/IMZE9O9b_2c', dl: 'https://download.informer.com/win-1191510807-6a5652f8-654d816e-2e2c9f2e59fe7de817-a8ce1dc7a8b1fabeb-5012947902-1124846395/asrevdemo.exe' },
+            'as2ne': { title: 'Alien Shooter 2 - New Era', video: 'https://www.youtube.com/embed/bo1z1ZDxNNA', dl: 'https://download192.uploadhaven.com/1/application/zip/FaHTaGM3xzJr0DbaSHCDjwB4jWhZ9vzKUd2ZICeF.zip?key=3dovYZeBGxbTQ02DUkg0IA&expire=1784475328&filename=Alien.Shooter.2.NE.v1.0.1.zip' },
+            'as': { title: 'Alien Shooter', video: 'https://www.youtube.com/embed/hL7Ci3MX82s', dl: 'https://download191.uploadhaven.com/1/application/zip/87wrm7DQFMgT01hvAfsBiq2dTWBg7N9NNPcoHmnL.zip?key=1e9TmopCbBMJfsuwMSHIJg&expire=1784476103&filename=alien.shooter.expansions.zip' },
+            'a_iso': { title: 'Alien Isolation Collection', video: 'https://www.youtube.com/embed/1pvaw3tqgaw', dl: 'https://pixeldrain.com/u/VQjTpbDh' },
+            'hl2': { title: 'Half-Life 2', video: 'https://www.youtube.com/embed/laGws1MYMq0', dl: 'https://pixeldrain.com/u/AykDHogE' },
+            'quake_ee': { title: 'Quake Enhanced Edition', video: 'https://www.youtube.com/embed/vi-bdUd9J3E', dl: 'https://pixeldrain.com/u/VMdXEXBD' },
+            'blacklight': { title: 'Blacklight Retribution', video: 'https://www.youtube.com/embed/vXVbKds7dSQ', dl: 'https://pixeldrain.com/u/xg3fXRwG' },
+            'prodeus': { title: 'Prodeus', video: 'https://www.youtube.com/embed/AUN7t2RyMSs', dl: 'https://uptobox.com/jhvgpet8gis5' },
+            'opflash': { title: 'Operation Flashpoint GOTY', video: 'https://www.youtube.com/embed/LE0lIpifstA', dl: 'https://pixeldrain.com/u/v3Te5p81' },
             'metro_redux': { 
                 title: 'Metro Redux Bundle', 
-                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxLyaBb5fbfTQ3-mJl1U8UtbVsgh-g8t---UmGpoFukA&s=10', 
                 video: 'https://www.youtube.com/embed/kPEh8XlSQuI', 
                 dl: 'https://pixeldrain.com/u/iJ1JyPxi' 
             }
@@ -169,7 +185,6 @@
             }
             
             document.getElementById('p_title').innerText = g.title;
-            document.getElementById('p_img').style.backgroundImage = 'url("' + g.img + '")';
             document.getElementById('p_video').src = g.video;
             
             const dlBtn = document.getElementById('dl_btn');
