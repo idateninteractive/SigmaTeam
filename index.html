@@ -82,57 +82,41 @@
 
     <div class="game_container">
         <div class="game_grid" id="game_grid">
-            <!-- Newly Added Games -->
+            <!-- Naye Add Kiye Gaye Games -->
+            <div class="game_card" onclick="showProfile('sof2_gold')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/SOF2gamecover.jpg/250px-SOF2gamecover.jpg');"></div>Soldier Of Fortune 2 Gold Edition</div>
+            <div class="game_card" onclick="showProfile('specnaz2')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3MgFrJ8Z5yYebErA8Tt9Ci1pC6RGSnr1hDL9FYbIGk5qnUpmRyV47sCe_&s=10');"></div>SpecNaz 2</div>
+            <div class="game_card" onclick="showProfile('red_ocean_2007')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/d/de/Red_Ocean.jpg');"></div>Red Ocean 2007</div>
+            <div class="game_card" onclick="showProfile('enemy_front')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/6/6a/EnemyFront.jpg');"></div>Enemy Front PC</div>
+            <div class="game_card" onclick="showProfile('exodus_from_the_earth')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkDKGfgBimBjXqTE1CkWnA3FzISTB_LluAqwfKs2WMwA&s');"></div>Exodus from the Earth</div>
+            <div class="game_card" onclick="showProfile('outlast_ce')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSHjLOF3fkXTDp5abKz7vIWWhmQDYK5UfxUYsRXwg5WL8gAVfSNSIPo_v2&s=10');"></div>Outlast Complete Edition</div>
+            <div class="game_card" onclick="showProfile('bia_rth30')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6bml1JlOU2qRXZATOAUE9bguUhWDFR_8LBjU4_VMeww&s=10');"></div>Brothers In Arms Road To Hill 30</div>
+            <div class="game_card" onclick="showProfile('hl1_anthology')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkMLDoCHCiyHvClVRYWwtxY3PiPqxrwlVjRvLFLCBmFg&s=10');"></div>Half-Life 1 Anthology</div>
+            <div class="game_card" onclick="showProfile('chernobyl_commando')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcqwWQq5RYn6M-cgkzNmPiJDzimg5EWTlmMhXaffYW1Q&s');"></div>Chernobyl Commando</div>
+            <div class="game_card" onclick="showProfile('syndicate_2012')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWQ-0DGgQ3xDjVgzgSDZCqSe1V0RlEPCf_idWQ06mHhw&s=10');"></div>Syndicate 2012</div>
+            <div class="game_card" onclick="showProfile('ww2_combat_rtb')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT005fbh5357wTEYalxG0FxvoIR00Xbc6aKbjHXCJIcfA&s=10');"></div>World War II Combat Road to Berlin</div>
+            <div class="game_card" onclick="showProfile('turning_point_fol')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQka2o6pDYFFrIIHW-mMxrR1bB0_Vfrx7wqovJxqdCmcFwveDo1-J9RJpGD&s=10');"></div>Turning Point Fall of Liberty</div>
+
+            <!-- Pehle se added Games -->
             <div class="game_card" onclick="showProfile('marine_heavy_gunner')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdXKP66xWt2Q-2EMrZwFN1zgpVPs1PHu8vUnRxp2FiUw&s=10');"></div>Marine Heavy Gunner Vietnam</div>
             <div class="game_card" onclick="showProfile('quake_2_rtx')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwxhRA8y8f4ZfQBMnrfL3_o096HrJXN8QRTZSnIP7kSQ&s');"></div>Quake II RTX Edition</div>
             <div class="game_card" onclick="showProfile('sof_payback')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-zBqHIazvP7IktcuTuW0G6EZN-HR_jqutnSoaIJ3p6A&s=10');"></div>Soldier Of Fortune Payback</div>
             <div class="game_card" onclick="showProfile('hard_reset_ee')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWcr5ADMscWXHmvpyOJ6VVtFuzCmmzV9pumoWVZAJSQQ&s=10');"></div>Hard Reset Extended Edition</div>
 
-            <!-- Betrayer -->
             <div class="game_card" onclick="showProfile('betrayer')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreHUx3zpkwtd5CHC_4m_PjwSFcruBtLN_N9y4Ia_QXg&s=10');"></div>Betrayer</div>
-
-            <!-- The Mark -->
             <div class="game_card" onclick="showProfile('the_mark')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlaCiE96iC4iNfZD9Bs3T8BEhPZ2VolPbXz_0uNA2tGGbTTLGiy9ROChE&s=10');"></div>The Mark</div>
-
-            <!-- F.E.A.R. 2: Project Origin -->
             <div class="game_card" onclick="showProfile('fear2')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/6/69/FEAR_2_Project_Origin_Game_Cover.jpg/250px-FEAR_2_Project_Origin_Game_Cover.jpg');"></div>F.E.A.R. 2: Project Origin</div>
-
-            <!-- Sniper Ghost Warrior 2 -->
             <div class="game_card" onclick="showProfile('sgw2')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7VMaBsT60KH9VOoBmT4IW_BP954WpTgqevq9Tj_NaHw&s=10');"></div>Sniper Ghost Warrior 2</div>
-
-            <!-- Sniper Ghost Warrior 3 Gold Edition -->
             <div class="game_card" onclick="showProfile('sgw3')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7iKwGQmJoC40kW8YTOyhynGvTa5sLZNVZ5wYLwNZNvQ&s=10');"></div>Sniper Ghost Warrior 3 Gold Edition</div>
-
-            <!-- Verdun And Tannenberg -->
             <div class="game_card" onclick="showProfile('verdun_and_tannenberg')"><div class="game_img" style="background-image: url('https://i0.wp.com/i112.fastpic.ru/big/2020/0726/ef/a4884e8f0946fac086cbda0a3e3ee5ef.jpg');"></div>Verdun And Tannenberg</div>
-
-            <!-- Homefront Ultimate Edition -->
             <div class="game_card" onclick="showProfile('homefront_ultimate_edition')"><div class="game_img" style="background-image: url('https://images.gog.com/548be5e48194f6122e34a17f8cb86f6943c8de7f3afb1e92d41bbfe633c1acb5_glx_vertical_cover.webp?namespace=gamesdb');"></div>Homefront Ultimate Edition</div>
-
-            <!-- Oni PC -->
             <div class="game_card" onclick="showProfile('oni')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTehsbtTAK3rVdzAbOmX9ipfEqsmfX8dPCDY-bhmxHZXw&s=10');"></div>Oni</div>
-
-            <!-- Assassin’s Creed IV Black Flag -->
             <div class="game_card" onclick="showProfile('ac4bf')"><div class="game_img" style="background-image: url('https://store-images.s-microsoft.com/image/apps.44102.69748098540497451.a03a4b64-603b-49b8-8644-4924ac7f3076.7c62c3e9-26da-46e8-a9f3-8cb7feb7d584?q=90&w=480&h=270');"></div>Assassin’s Creed IV Black Flag</div>
-
-            <!-- Top Hunter Roddy & Cathy -->
             <div class="game_card" onclick="showProfile('thrc')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmjOT4ttYbeUFgY2ZI-HB_M-36KE5ukNaEIPM_nfL3Y9sS1FjyHfkJwCo_&s=10');"></div>Top Hunter Roddy & Cathy</div>
-
-            <!-- Ys Origin -->
             <div class="game_card" onclick="showProfile('yso')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTky1F3llZEtn6wXMGSwx7XY8h9_iX95MOv3ETzaLN0Yg&s=10');"></div>Ys Origin</div>
-
-            <!-- One More Dungeon -->
             <div class="game_card" onclick="showProfile('omd')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm4lwHQDr54wFN5lM2OhCv-xG2NMJOh173HEtXpqDbEg&s=10');"></div>One More Dungeon</div>
-
-            <!-- Neuro Hunter -->
             <div class="game_card" onclick="showProfile('nh')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfbk64cu_JkUKc8Y5H-d6ov1KDqxIy_qNn0ogBL8bl_g&s=10');"></div>Neuro Hunter</div>
-
-            <!-- The King of Fighters XIII Steam Edition -->
             <div class="game_card" onclick="showProfile('kof13')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIKxUHJaFisPrKxPLuutmolS9o1Z1uKddsAAGCgeCkWkOOnt35tVKQpzo&s=10');"></div>The King of Fighters XIII Steam Edition</div>
-            
-            <!-- Mortal Kombat Komplete -->
             <div class="game_card" onclick="showProfile('mkk')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFGzaU0yzNxUw9NpOojJmShlnZb_4i4nThpjjArHUoQA&s=10');"></div>Mortal Kombat Komplete</div>
-            
             <div class="game_card" onclick="showProfile('dj')"><div class="game_img" style="background-image: url('https://cdn.myrealgames.com/catalog/cache/catalog/items/40/screenshots/161.jpg');"></div>Diver Jimmy</div>
             <div class="game_card" onclick="showProfile('cec2d')"><div class="game_img" style="background-image: url('https://cdn.myrealgames.com/catalog/cache/catalog/items/61/screenshots/245.jpg');"></div>Car Eats Car 2 Deluxe</div>
             <div class="game_card" onclick="showProfile('ah')"><div class="game_img" style="background-image: url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/98900/capsule_616x353.jpg?t=1731074846');"></div>Alien Hallway</div>
@@ -185,43 +169,18 @@
             <div class="game_card" onclick="showProfile('pain_train_2')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ70e-Ax41opD6Akd5iJJnUjP0xHh_2UFfN5W5ktziJOg&s=10');"></div>Pain Train 2</div>
             <div class="game_card" onclick="showProfile('slain_back_from_hell')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO9bEmUkHY1rDXNUVay8MQOXUhiIYkCtJpOBwlOvhRqLFYWEaL1TUa-h8&s=10');"></div>Slain: Back From Hell</div>
 
-            <!-- Terraria -->
             <div class="game_card" onclick="showProfile('terraria')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/1/1a/Terraria_Steam_artwork.jpg');"></div>Terraria</div>
-
-            <!-- Serious Sam HD The Second Encounter -->
             <div class="game_card" onclick="showProfile('ss_hd_se')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpekvDbbbJrMxs2Ggx7GmWG4FW_9dVOIYA0pWVyoBB60fieqEJ61T4ZM8&s=10');"></div>Serious Sam HD The Second Encounter</div>
-
-            <!-- God of War 2 -->
             <div class="game_card" onclick="showProfile('gow2')"><div class="game_img" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNzBjN2ZkNjEtODgxNS00NWQwLWJmNjAtYmQ5NWRlMDA0ZDhlXkEyXkFqcGc@._V1_.jpg');"></div>God of War 2</div>
-
-            <!-- Dustoff Heli Rescue 2 -->
             <div class="game_card" onclick="showProfile('dhr2')"><div class="game_img" style="background-image: url('https://store-images.s-microsoft.com/image/apps.49482.66705048845324066.2b3207da-1d03-4af4-852f-37365440a705.b9b0cbfa-de8e-4509-b982-08a23577a751');"></div>Dustoff Heli Rescue 2</div>
-
-            <!-- Drifting Lands -->
             <div class="game_card" onclick="showProfile('drifting_lands')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSCzEE1y_q8HGkFIJwrxKJ8T5Cuj_WlWGm6C9Pb-vTnFL18R_l9ZP0DrE0&s=10');"></div>Drifting Lands</div>
-
-            <!-- Crysis 3 Remastered -->
             <div class="game_card" onclick="showProfile('crysis3_remastered')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvyMi4wFqj3lhQdPlNy4LBxF_CsRvuQbwLOQOH1442w&s=10');"></div>Crysis 3 Remastered</div>
-
-            <!-- NecroVision: Lost Company -->
             <div class="game_card" onclick="showProfile('necrovision_lc')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5jS36DW3LiiKQMybVEPp2T6Jg-RAXQHAp1uJk6mmcuw&s=10');"></div>NecroVision: Lost Company</div>
-
-            <!-- The Hell In Vietnam -->
             <div class="game_card" onclick="showProfile('the_hell_in_vietnam')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGRIKbQWmF1XcTlSsBWZObpz6aegCnIp4D-vfUBFJewg&s=10');"></div>The Hell In Vietnam</div>
-
-            <!-- Painkiller Black Edition -->
             <div class="game_card" onclick="showProfile('painkiller_black_edition')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3_Q0Mj29PYuRLHeCnGwsYn1I336n02UrxuorcUZSGjA&s=10');"></div>Painkiller Black Edition</div>
-
-            <!-- E.Y.E: Divine Cybermancy -->
             <div class="game_card" onclick="showProfile('eye_cybermancy')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9EfoeQg5DAg8jwANmlmar67eFFZgX0Gi1h0Z0GZE--Q&s=10');"></div>E.Y.E: Divine Cybermancy</div>
-
-            <!-- Delta Force: Black Hawk Down Platinum Pack -->
             <div class="game_card" onclick="showProfile('delta_force_bhd')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJgAzdtCAEegANfOuY2FqEGrp0Gy6t8UkrRCWkgsdY93nI4fK-Gm0pTLdH&s=10');"></div>Delta Force: Black Hawk Down Platinum Pack</div>
-
-            <!-- Rage Complete Edition -->
             <div class="game_card" onclick="showProfile('rage_complete_edition')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Lj-hiPXUFC8mHpDvwG5zctYI_WPH7GlQJF97BZPQhg&s=10');"></div>Rage Complete Edition</div>
-
-            <!-- Red Faction 1 -->
             <div class="game_card" onclick="showProfile('red_faction_1')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2d/Red_Faction.jpg');"></div>Red Faction 1</div>
         </div>
     </div>
@@ -292,6 +251,81 @@
         });
 
         const games = {
+            'sof2_gold': {
+                title: 'Soldier Of Fortune 2 Gold Edition',
+                video: 'https://www.youtube.com/embed/nrQjD8AaHcY',
+                dl: 'https://pixeldrain.com/u/jdhh8i9M',
+                dl2: 'https://www.mediafire.com/file/9vp0bfsr7brydli/SOF2.Gold.rar/file'
+            },
+            'specnaz2': {
+                title: 'SpecNaz 2',
+                video: 'https://www.youtube.com/embed/ad0F8nq_hLE',
+                dl: 'https://pixeldrain.com/u/5zutJgLc',
+                dl2: 'https://www.mediafire.com/file/wzox12zispjxre4/Specnaz2.rar/file'
+            },
+            'red_ocean_2007': {
+                title: 'Red Ocean 2007',
+                video: 'https://www.youtube.com/embed/YAXHf2ofQog',
+                dl: 'https://pixeldrain.com/u/TFTwdBAS',
+                dl2: 'https://www.mediafire.com/file/iwih5uiv9wwmly1/Red.Ocean.MULTI2.rar/file'
+            },
+            'enemy_front': {
+                title: 'Enemy Front PC',
+                video: 'https://www.youtube.com/embed/QO2ttEHxlps',
+                dl: 'https://pixeldrain.com/u/GkS7X2MJ',
+                dl2: 'https://www.mediafire.com/file/ejtabv8z3g24pc8/EF2014.MULTi8-ElAmigos.rar/file',
+                dl3: 'https://fastupload.io/488dd6d917853330'
+            },
+            'exodus_from_the_earth': {
+                title: 'Exodus from the Earth',
+                video: 'https://www.youtube.com/embed/1Ae_L1iB7g4',
+                dl: 'https://pixeldrain.com/u/RGzAFaeb',
+                dl2: 'https://www.mediafire.com/file/geiwy2bn4wfejre/Exodus.from.the.Earth.rar/file',
+                dl3: 'https://fastupload.io/1e6fc07626dbf26e'
+            },
+            'outlast_ce': {
+                title: 'Outlast Complete Edition',
+                video: 'https://www.youtube.com/embed/5Z_2WNwxYrE',
+                dl: 'https://pixeldrain.com/u/3x8wr8z7',
+                dl2: 'https://www.mediafire.com/file/r8iw64flhv6xd49/Outlast2013.rar/file',
+                dl3: 'https://mega.nz/file/w2dDBTSY#ATJrHg8e24u_UgOMz0trLoEmdkWHK4UXow6F3e81wd8'
+            },
+            'bia_rth30': {
+                title: 'Brothers In Arms Road To Hill 30',
+                video: 'https://www.youtube.com/embed/DqUJu9ESpSw',
+                dl: 'https://pixeldrain.com/u/GAs66PZy',
+                dl2: 'https://www.mediafire.com/file/hw07zel6960istw/BIARTH30.rar/file'
+            },
+            'hl1_anthology': {
+                title: 'Half-Life 1 Anthology',
+                video: 'https://www.youtube.com/embed/dg7KwDIUfrU',
+                dl: 'https://pixeldrain.com/u/TZMZmR5P',
+                dl2: 'https://www.mediafire.com/file/bnto8zwk6cwefnd/HL1A.rar/file'
+            },
+            'chernobyl_commando': {
+                title: 'Chernobyl Commando',
+                video: 'https://www.youtube.com/embed/0JriVSPWL9c',
+                dl: 'https://pixeldrain.com/u/GftF88mZ',
+                dl2: 'https://www.mediafire.com/file/28noufnyfc3xm4o/Chernobyl_Commando.rar/file'
+            },
+            'syndicate_2012': {
+                title: 'Syndicate 2012',
+                video: 'https://www.youtube.com/embed/SgXnNeVdJrs',
+                dl: 'https://pixeldrain.com/u/1RjX6qQj',
+                dl2: 'https://www.mediafire.com/file/xmw3ppl4ev2prdh/Syndiicate.2012.rar/file'
+            },
+            'ww2_combat_rtb': {
+                title: 'World War II Combat Road to Berlin',
+                video: 'https://www.youtube.com/embed/aKgQuRtZrgg',
+                dl: 'https://pixeldrain.com/u/XkJRSV8b',
+                dl2: 'https://www.mediafire.com/file/5p6xh8noof7kn9d/World.War2.Combat.Road.To.Berlin.rar/file'
+            },
+            'turning_point_fol': {
+                title: 'Turning Point Fall of Liberty',
+                video: 'https://www.youtube.com/embed/eFLrDCvNwj0',
+                dl: 'https://pixeldrain.com/u/xmP2cEHH',
+                dl2: 'https://www.mediafire.com/file/lt3s85h4l1ssdzj/TPFL2008.rar/file'
+            },
             'marine_heavy_gunner': {
                 title: 'Marine Heavy Gunner Vietnam',
                 video: 'https://www.youtube.com/embed/_PDrMSroRDI',
