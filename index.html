@@ -15,25 +15,49 @@
             background-attachment: fixed; 
             background-repeat: no-repeat; 
         }
-        .header_wrapper { background-color: #171a21; padding: 15px 0; border-bottom: 2px solid #66c0f4; }
+        .header_wrapper { background-color: #171a21; padding: 15px 0; border-bottom: 2px solid #ff4d4d; }
         .content { max-width: 940px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         .logo { font-size: 28px; font-weight: bold; color: #ffffff; }
-        .search_bar { width: 300px; padding: 8px; background: #101822; border: 1px solid #334455; color: #fff; outline: none; }
-        .search_bar:focus { border-color: #66c0f4; }
+        .search_bar { width: 300px; padding: 8px; background: #101822; border: 1px solid #ff4d4d; color: #fff; outline: none; border-radius: 4px; }
+        .search_bar:focus { border-color: #ff0000; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); }
         
         .nav_right { display: flex; align-items: center; gap: 20px; }
         .discord_link { color: #7289da; text-decoration: none; font-weight: bold; }
 
         .game_container { max-width: 940px; margin: 30px auto; }
         .game_grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .game_card { background: #16202d; padding: 10px; border: 1px solid #000; cursor: pointer; transition: 0.2s; text-align: center; }
-        .game_card:hover { transform: scale(1.03); background: #1a293a; }
+        
+        /* Game Card Base & Active State */
+        .game_card { 
+            background: #16202d; 
+            padding: 10px; 
+            border: 2px solid transparent; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .game_card:hover { 
+            transform: translateY(-4px); 
+            background: #1a293a; 
+            border-color: rgba(255, 0, 0, 0.5);
+        }
+        /* Tap / Active State: Red Layer Border */
+        .game_card.active {
+            border: 2px solid #ff0000 !important;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), inset 0 0 10px rgba(255, 0, 0, 0.3);
+            transform: scale(1.04);
+            background: #1f1416;
+        }
         
         /* Game Image Wrapper & Views Badge */
         .game_img_wrap {
             position: relative;
             width: 100%;
             margin-bottom: 10px;
+            border-radius: 4px;
+            overflow: hidden;
         }
         .game_img { 
             width: 100%; 
@@ -46,7 +70,7 @@
             position: absolute;
             bottom: 6px;
             right: 6px;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             color: #ffffff;
             padding: 3px 6px;
             font-size: 10px;
@@ -54,17 +78,47 @@
             font-weight: bold;
             pointer-events: none;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 77, 77, 0.4);
         }
 
-        #profile_section { max-width: 940px; margin: 30px auto; background: #101822; padding: 25px; display: none; border: 1px solid #334455; }
-        .profile_layout { display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
+        /* Unique Red Cyberpunk Profile Section */
+        #profile_section { 
+            max-width: 940px; 
+            margin: 30px auto; 
+            background: linear-gradient(135deg, #101822 0%, #1a0a0c 100%); 
+            padding: 25px; 
+            display: none; 
+            border: 2px solid #ff0000; 
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.35);
+        }
+        #p_title {
+            color: #ffffff; 
+            margin-top: 0; 
+            font-size: 26px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 10px;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+        }
+        .profile_layout { display: flex; flex-direction: column; gap: 20px; margin-bottom: 10px; }
 
         .profile_info { width: 100%; display: flex; flex-direction: column; }
-        .video_container { width: 100%; height: 450px; background: #000; margin-bottom: 20px; }
+        .video_container { 
+            width: 100%; 
+            height: 450px; 
+            background: #000; 
+            margin-bottom: 20px; 
+            border: 1px solid #ff4d4d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
         
         .btn_container { display: flex; justify-content: center; align-items: center; padding-top: 10px; min-height: 80px; gap: 15px; flex-wrap: wrap; }
-        .download_img_btn { cursor: pointer; width: 280px; height: 70px; object-fit: contain; }
+        .download_img_btn { cursor: pointer; width: 280px; height: 70px; object-fit: contain; transition: transform 0.2s ease; }
+        .download_img_btn:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -82,7 +136,7 @@
 
     <div class="game_container">
         <div class="game_grid" id="game_grid">
-            <!-- Previously Added Games -->
+            <!-- Games Grid -->
             <div class="game_card" onclick="showProfile('oni')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTehsbtTAK3rVdzAbOmX9ipfEqsmfX8dPCDY-bhmxHZXw&s=10');"></div>Oni</div>
             <div class="game_card" onclick="showProfile('ac4bf')"><div class="game_img" style="background-image: url('https://store-images.s-microsoft.com/image/apps.44102.69748098540497451.a03a4b64-603b-49b8-8644-4924ac7f3076.7c62c3e9-26da-46e8-a9f3-8cb7feb7d584?q=90&w=480&h=270');"></div>Assassin’s Creed IV Black Flag</div>
             <div class="game_card" onclick="showProfile('thrc')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmjOT4ttYbeUFgY2ZI-HB_M-36KE5ukNaEIPM_nfL3Y9sS1FjyHfkJwCo_&s=10');"></div>Top Hunter Roddy & Cathy</div>
@@ -140,8 +194,6 @@
             <div class="game_card" onclick="showProfile('terraria')"><div class="game_img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/1/1a/Terraria_Steam_artwork.jpg');"></div>Terraria</div>
             <div class="game_card" onclick="showProfile('ss_hd_se')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpekvDbbbJrMxs2Ggx7GmWG4FW_9dVOIYA0pWVyoBB60fieqEJ61T4ZM8&s=10');"></div>Serious Sam HD The Second Encounter</div>
             <div class="game_card" onclick="showProfile('gow2')"><div class="game_img" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNzBjN2ZkNjEtODgxNS00NWQwLWJmNjAtYmQ5NWRlMDA0ZDhlXkEyXkFqcGc@._V1_.jpg');"></div>God of War 2</div>
-
-            <!-- Newly Added Games -->
             <div class="game_card" onclick="showProfile('metro_exodus_ee')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkhsQOa20rXGDXuz6u6aFTdheRUy-ii6-pgZot9clJQA&s=10');"></div>Metro Exodus Enhanced Edition</div>
             <div class="game_card" onclick="showProfile('observer_sr')"><div class="game_img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEKjLo10FvYKiXgdMg-fB-0is2IW8sPJYPgaCIH9gukw&s=10');"></div>Observer: System Redux</div>
             <div class="game_card" onclick="showProfile('biohazard_uc')"><div class="game_img" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMzhkMTIxZTAtOTQyNC00MzBiLWI0ZTEtZThhMzY1ZDYzOGNjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');"></div>Biohazard Umbrella Corps</div>
@@ -200,26 +252,23 @@
     </div>
 
     <div id="profile_section">
-        <h1 id="p_title" style="color: #ffffff; margin-top: 0;"></h1>
+        <h1 id="p_title"></h1>
         <div class="profile_layout">
             <div class="profile_info">
                 <div class="video_container">
                     <iframe id="p_video" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="btn_container">
-                    <!-- Download Button 1 -->
+                    <!-- Download Buttons -->
                     <a id="dl_link" href="#" target="_blank">
                         <img src="https://archive.org/download/new-project-2_20260715/New%20Project%282%29.png" class="download_img_btn" id="dl_btn">
                     </a>
-                    <!-- Download Button 2 -->
                     <a id="dl_link2" href="#" target="_blank" style="display: none;">
                         <img src="https://cdn.phototourl.com/free/2026-07-20-61dce233-5a92-4b9a-8d44-3f79028f57ce.png" class="download_img_btn" id="dl_btn2">
                     </a>
-                    <!-- Download Button 3 -->
                     <a id="dl_link3" href="#" target="_blank" style="display: none;">
                         <img src="https://archive.org/download/new-project-2_20260715/New%20Project%282%29.png" class="download_img_btn" id="dl_btn3">
                     </a>
-                    <!-- Download Button 4 -->
                     <a id="dl_link4" href="#" target="_blank" style="display: none;">
                         <img src="https://cdn.phototourl.com/free/2026-07-20-61dce233-5a92-4b9a-8d44-3f79028f57ce.png" class="download_img_btn" id="dl_btn4">
                     </a>
@@ -322,8 +371,6 @@
             'terraria': { title: 'Terraria', video: 'https://www.youtube.com/embed/2SaFNd-5Qos', dl: 'https://megaup.net/47a87beb3e3eaf2f0bb4a7e516838c0d/Terraria.v1.4.5.4-P2P.rar', dl2: 'https://akirabox.to/EL73g6OXEm9B/file', dl3: 'https://pixeldrain.com/u/i1t4UNzj' },
             'ss_hd_se': { title: 'Serious Sam HD The Second Encounter', video: 'https://www.youtube.com/embed/-jRQRbg-qug', dl: 'https://megaup.net/bc52ff1a87fdb23aad2dc1f18638bfcb/Serious.Sam.HD.The.First.and.Second.Encounter.v263699.rar', dl2: 'https://akirabox.to/ex5z2B008zKq/file', dl3: 'https://pixeldrain.com/u/PXzTvmN9' },
             'gow2': { title: 'God of War 2', video: 'https://www.youtube.com/embed/QAjwSDecOrU', dl: 'https://akirabox.to/M2BGw6Y9Mzj4/file', dl2: 'https://pixeldrain.com/u/B8iAv4aq' },
-
-            // Newly Added Games Data
             'metro_exodus_ee': { title: 'Metro Exodus Enhanced Edition', video: 'https://www.youtube.com/embed/cW9sX3vB4lU', dl: 'https://1fichier.com/?yjd9zvk9z9od86rosa8c', dl2: 'https://uptobox.com/vqiskz9njvpn', dl3: 'https://1fichier.com/?g91ll0g11ymi0qttz835' },
             'observer_sr': { title: 'Observer: System Redux', video: 'https://www.youtube.com/embed/e1DzSPoGwnc', dl: 'https://pixeldrain.com/u/kznCojPz', dl2: 'https://anonfiles.com/w0vaLfe6z8/Observer_System_Redux_v09_16_2021_zip' },
             'biohazard_uc': { title: 'Biohazard Umbrella Corps', video: 'https://www.youtube.com/embed/kB7S9Tk45js', dl: 'https://pixeldrain.com/u/b6TEQztq', dl2: 'https://akirabox.to/rk9zKr7o430l/file', dl3: 'https://www.mediafire.com/file/h58xffahbzpcinn/UmbrellaCorps.rar/file', dl4: 'https://mega.nz/file/yGxmna5T#Qxu_ZNhIYhcB-X1rhtLClY9u6Z7mdqUje2ZSs7SxKO8' },
@@ -381,6 +428,14 @@
         };
 
         function showProfile(id) {
+            // Remove 'active' red layer from all cards
+            document.querySelectorAll('.game_card').forEach(card => card.classList.remove('active'));
+
+            // Add 'active' red layer to the clicked card
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
+
             const profile = document.getElementById('profile_section');
             const g = games[id];
             if (!g) {
